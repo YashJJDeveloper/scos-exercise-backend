@@ -35,7 +35,7 @@ export const GET_USER_INSTITUTES = `SELECT
         json_build_object(
             'role_id', r.id,
             'role_name', r.name,
-            'role_logo', r.logo_url
+            'role_logo', r.role_logo   
         )
     ) AS roles
 FROM user_institute_roles uir
