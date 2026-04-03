@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config();    
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
-  // ❌ No token
+  // Check if token is provided
   if (!authHeader) {
     return res.status(401).json({ message: "No token provided" });
   }
@@ -15,7 +15,7 @@ const verifyToken = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-    // ✅ Attach user info to request
+    //  Attach user info to request
     req.user = decoded;
 
     next();
